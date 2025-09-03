@@ -1,17 +1,21 @@
 def caesar_cipher(text, k):
-    result = ""
-    for char in text:
-        if char.isalpha():  
-            shift = 65 if char.isupper() else 97  
-            result += chr((ord(char) - shift + k) % 26 + shift)
+    ketqua = ""
+    for ch in text:
+        if ch.isalpha():
+            # dùng 'A' nếu là chữ hoa, 'a' nếu là chữ thường
+            base = 'A' if ch.isupper() else 'a'
+            # dịch chuyển ký tự
+            vitri = (ord(ch) - ord(base) + k) % 26
+            ketqua += chr(ord(base) + vitri)
         else:
-            result += char  
-    return result
+            ketqua += ch
+    return ketqua
 
-if __name__ == "__main__":
-    plaintext = "NguyenThiNy"
-    k = 21
-    ciphertext = caesar_cipher(plaintext, k)
-    print("Plaintext :", plaintext)
-    print("k =", k)
-    print("Ciphertext:", ciphertext)
+# chương trình chính
+plaintext = "NguyenThiNy"
+k = 21
+ciphertext = caesar_cipher(plaintext, k)
+
+print("Plaintext :", plaintext)
+print("k =", k)
+print("Ciphertext:", ciphertext)
